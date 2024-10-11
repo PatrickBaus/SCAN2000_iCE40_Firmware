@@ -24,7 +24,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo apt install -y install nextpnr-ice40 yosys iverilog
+        sudo apt -y install nextpnr-ice40 yosys iverilog
 
     - name: Run tests
       run: |
