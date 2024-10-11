@@ -1,7 +1,7 @@
 [![Build firmware](https://github.com/PatrickBaus/SCAN2000_iCE40_Firmware/actions/workflows/ci.yml/badge.svg)](https://github.com/PatrickBaus/SCAN2000_iCE40_Firmware/actions/workflows/ci.yml)
 
 # Keithley SCAN2000 iCE40 SSR Replacement Firmware
-This repository contains the [SystemVerilog](https://en.wikipedia.org/wiki/SystemVerilog) firmware for the Keithley SCAN2000 iCE40 SSR replacement PCB found [here](https://github.com/PatrickBaus/SCAN2000/). Do note, this firmware only works with the 2.x revision of the PCB that uses the iCE40 FPGA.
+This repository contains the [SystemVerilog](https://en.wikipedia.org/wiki/SystemVerilog) firmware for the Keithley SCAN2000 iCE40 SSR replacement PCB found [here](https://github.com/PatrickBaus/SCAN2000/). Do note, this firmware only works with the 2.x revision of the PCB that uses the [iCE40 FPGA](https://www.latticesemi.com/iCE40). I used the [iCE40](https://www.latticesemi.com/iCE40), because there is an open source framework called (Project IceStorm)[https://github.com/YosysHQ/icestorm] to compile the [SystemVerilog](https://en.wikipedia.org/wiki/SystemVerilog) for the [iCE40](https://www.latticesemi.com/iCE40).
 
 ## Contents
 - [Description](#description)
