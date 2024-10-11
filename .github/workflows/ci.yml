@@ -40,7 +40,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt -y install nextpnr-ice40 yosys
+          sudo apt -y install nextpnr-ice40 yosys fpga-icestorm
 
       - name: Build firmware
         run: |
