@@ -1,0 +1,74 @@
+name: ci
+
+on:
+  push:
+    # Publish pep440 tags as releases.
+    branches: [ "master" ]
+    # Ignore the push event when creating tags
+    tags-ignore:
+      - 'v?[0-9]+.[0-9]+.[0-9]+'
+  release:
+    types:
+      - published
+
+jobs:
+  tests:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt install -y install nextpnr-ice40 yosys iverilog
+
+    - name: Run tests
+      run: |
+       make tests
+
+  build:
+    needs:
+      - tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt -y install nextpnr-ice40 yosys
+
+      - name: Build firmware
+        run: |
+          make
+
+      - name: Upload binary files as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Scan2000iCE40_FW
+          path: scan2000.bin
+          retention-days: 7
+
+  release:
+    name: Append binary firmware files to release
+    needs:
+      - build
+    if: github.event.action == 'published'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download binary files artifact
+        uses: actions/download-artifact@v4
+        with:
+          path: build
+          pattern: Scan2000iCE40_FW
+          merge-multiple: true
+
+      - name: Append firmware image as asset
+        run: |
+          mv build/scan2000.bin build/Scan2000iCE40.bin
+          gh release upload ${{ github.ref_name }} build/Scan2000iCE40.bin#"SCAN2000_iCE40 firmware image (bin)" --repo ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash

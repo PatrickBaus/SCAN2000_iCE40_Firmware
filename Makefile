@@ -5,7 +5,6 @@ FPGA_PKG = tq144
 FPGA_TYPE = hx1k
 PCF = scan2000.pcf
 ADD_SRC =
-#fsm_adc.sv ltc2508_clk_gen.sv
 
 all: $(PROJ).rpt $(PROJ).bin
 
