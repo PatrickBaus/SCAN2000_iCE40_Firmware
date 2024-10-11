@@ -1,0 +1,10 @@
+*.bin
+*.blif
+*.asc
+*.rpt
+*json
+
+*.vcd
+*.vvp
+
+*.log

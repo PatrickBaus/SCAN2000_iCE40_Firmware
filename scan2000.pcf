@@ -1,0 +1,27 @@
+set_io CLK_SYS 128
+set_io DATA_DMM 1
+set_io CLK_DMM 2
+set_io STROBE_DMM 3
+set_io CH1 94
+set_io CH2 95
+set_io CH3 96
+set_io CH4 97
+set_io CH5 101
+set_io CH6 102
+set_io CH7 104
+set_io CH8 105
+set_io CH9 106
+set_io CH10 107
+set_io CH11 90
+set_io CH12 87
+set_io CH13 81
+set_io CH14 80
+set_io CH15 79
+set_io CH16 78
+set_io CH17 76
+set_io CH18 75
+set_io CH19 74
+set_io CH20 73
+set_io Bus2_sense_enable 91
+set_io Bus2_input_enable 93
+set_io -pullup yes CH20_mode_enable 20
